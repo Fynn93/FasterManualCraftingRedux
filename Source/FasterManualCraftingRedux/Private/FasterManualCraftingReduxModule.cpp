@@ -39,10 +39,11 @@ void FFasterManualCraftingReduxModule::StartupModule() {
 		GetProducedCountRef(self) = 0;
 	});
 
-	SUBSCRIBE_METHOD_VIRTUAL(UFGWorkBench::TickComponent, workBenchCDO, [](auto& scope, UFGWorkBench* self, float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) {
+	// FIXME: EXCEPTION_ACCESS_VIOLATION reading address 0x0000000000168009
+	/*SUBSCRIBE_METHOD_VIRTUAL(UFGWorkBench::TickComponent, workBenchCDO, [](auto& scope, UFGWorkBench* self, float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) {
 		if (self->mManufacturingButton && !self->mManufacturingButton->IsButtonHeld())
 			GetProducedCountRef(self) = 0;
-	});
+	});*/
 
 
 	SUBSCRIBE_METHOD(UFGWorkBench::TickProducing, [](auto& scope, UFGWorkBench* self, float dt) {
